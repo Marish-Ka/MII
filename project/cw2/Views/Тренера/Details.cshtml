@@ -1,0 +1,60 @@
+﻿@model cw2.Models.Тренера
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ if (Session["role"].ToString() == "Лаборант")
+    {<h1>У вас нет прав просматривать данные</h1> }
+}
+<h2>Details</h2>
+
+<div>
+    <h4>Тренера</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Преподаваемый_вид_спорта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Преподаваемый_вид_спорта)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Квалификация)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Квалификация)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сертификация_текущего_года_по_антидопингу)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сертификация_текущего_года_по_антидопингу)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_дисквалификаций)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_дисквалификаций)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Персональные_данные.Фамилия)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_тренера }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

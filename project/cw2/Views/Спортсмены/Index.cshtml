@@ -1,0 +1,134 @@
+﻿@model IEnumerable<cw2.Models.Спортсмены>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{ if (Session["role"].ToString() == "Лаборант")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+@{ if (Session["role"].ToString() == "Тренер")
+    {<h1>Вы можете только просматривать данные</h1> }
+}
+<h2>Данные о спортсменах</h2>
+@{ if (Session["role"].ToString() == "Спортсмен")
+    {<h4>Если вы спортсмен, вам доступны следующие ссылки:</h4>
+        <p>
+            <a href="~/Активность_спортсмена/Index">Активность спортсменов</a>
+        </p>
+        <p>
+            <a href="~/Принимаемые_препараты/Index">Принимаемые препараты</a>
+        </p>
+        <p>
+            <a href="~/Тренера/Index">Узнать сведения о тренерах</a>
+        </p>}}
+@{ if (Session["role"].ToString() == "Тренер")
+    {<p>
+            <a href="~/Тренера/Index">Вернуться к данным о тренерах</a>
+        </p>}
+}
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Спортивный разряд: </label>
+        @Html.DropDownList("sports_category", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано", Value="null"},
+                new SelectListItem() {Text="Мастер спорта", Value="Мастер"},
+                new SelectListItem() {Text="Кандидат в мастера спорта", Value="Кандидат"},
+                new SelectListItem() {Text="Первый взрослый", Value="Первый "},
+                new SelectListItem() {Text="Второй взрослый", Value="Второй"},
+                new SelectListItem() {Text="Третий взрослый", Value="Третий"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Спортивное гражданство: </label>
+        @Html.DropDownList("sprots_citizenship", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано",Value="null"},
+                new SelectListItem() {Text="РФ", Value="Российская федерация"},
+                new SelectListItem() {Text="Страны СНГ", Value="СНГ"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+
+        <input type="submit" name="filter" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_спортсмена)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Вид_спорта)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Спортивная_дисциплина)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Спортивное__ый__звание___разряд)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Гражданство)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Спортивное_гражданство)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Инвалидность)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Группа_инвалидности)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_спортсмена)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Персональные_данные.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Вид_спорта)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Спортивная_дисциплина)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Спортивное__ый__звание___разряд)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Гражданство)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Спортивное_гражданство)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Инвалидность)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Группа_инвалидности)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_спортсмена }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_спортсмена }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_спортсмена })
+            </td>
+        </tr>
+    }
+
+</table>

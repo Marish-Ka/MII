@@ -1,0 +1,86 @@
+﻿@model IEnumerable<cw2.Models.Пробы>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+<h2>Данные о заборах проб</h2>
+@{ if (Session["role"].ToString() == "Лаборант")
+    {<p>
+            <a href="~/Лаборанты/Index">Вернуться к данным о лаборантах</a>
+        </p>} }
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_пробы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Спортсмены.ID_спортсмена)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_забора)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Вид_пробы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Объем_пробы__мл_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Плотность__г_л_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наличие_проб_A_и_B)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Лаборанты.ID_лаборанта)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_пробы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Спортсмены.ID_спортсмена)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_забора)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Вид_пробы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Объем_пробы__мл_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Плотность__г_л_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наличие_проб_A_и_B)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Лаборанты.ID_лаборанта)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_пробы }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_пробы }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_пробы })
+            </td>
+        </tr>
+    }
+
+</table>

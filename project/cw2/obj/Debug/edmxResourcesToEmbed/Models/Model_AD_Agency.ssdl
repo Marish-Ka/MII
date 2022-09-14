@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Антидопинговое_агенствоModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Активность спортсмена">
+    <Key>
+      <PropertyRef Name="Номер активости " />
+    </Key>
+    <Property Name="Номер активости " Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата" Type="date" Nullable="false" />
+    <Property Name="Местонахождение " Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="Деятельность" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Свободный час" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ID спортсмена" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Антидопинговые тесты">
+    <Key>
+      <PropertyRef Name="Номер теста" />
+    </Key>
+    <Property Name="Номер теста" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата проведения" Type="date" Nullable="false" />
+    <Property Name="Время хранения пробы" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Вскрытие пробы B" Type="bit" />
+    <Property Name="Наличие запрещенных препаратов" Type="bit" />
+    <Property Name="Выявленные запрещенные препараты" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Согласие спортсмена с результатом" Type="bit" />
+    <Property Name="ID пробы" Type="int" Nullable="false" />
+    <Property Name="ID лаборанта" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Лаборанты">
+    <Key>
+      <PropertyRef Name="ID лаборанта" />
+    </Key>
+    <Property Name="ID лаборанта" Type="int" Nullable="false" />
+    <Property Name="Категория" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Место работы" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Стаж (в годах)" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Персональные данные">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Фамилия" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Имя" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="40" />
+    <Property Name="Пол" Type="bit" />
+    <Property Name="Дата рождения" Type="datetime" Nullable="false" />
+    <Property Name="Номер телефона" Type="nvarchar" MaxLength="18" />
+    <Property Name="Статус" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Принимаемые препараты">
+    <Key>
+      <PropertyRef Name="Номер назначения врачом" />
+    </Key>
+    <Property Name="Номер назначения врачом" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Медикаменты" Type="nvarchar" MaxLength="40" />
+    <Property Name="Пищевые добавки" Type="nvarchar" MaxLength="40" />
+    <Property Name="Витамины" Type="nvarchar" MaxLength="40" />
+    <Property Name="Минералы" Type="nvarchar" MaxLength="40" />
+    <Property Name="Длительность приема" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Действие назначения врача" Type="bit" />
+    <Property Name="ID спортсмена" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Пробы">
+    <Key>
+      <PropertyRef Name="ID пробы" />
+    </Key>
+    <Property Name="ID пробы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата забора" Type="datetime" Nullable="false" />
+    <Property Name="Вид пробы" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Объем пробы (мл)" Type="int" Nullable="false" />
+    <Property Name="Плотность (г/л)" Type="int" />
+    <Property Name="Наличие проб A и B" Type="bit" />
+    <Property Name="ID спортсмена" Type="int" Nullable="false" />
+    <Property Name="ID лаборанта" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Спортсмены">
+    <Key>
+      <PropertyRef Name="ID спортсмена" />
+    </Key>
+    <Property Name="ID спортсмена" Type="int" Nullable="false" />
+    <Property Name="Вид спорта" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Спортивная дисциплина" Type="nvarchar" MaxLength="20" />
+    <Property Name="Спортивное(-ый) звание / разряд" Type="nvarchar" MaxLength="70" />
+    <Property Name="Гражданство" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Спортивное гражданство" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Инвалидность" Type="bit" />
+    <Property Name="Группа инвалидности" Type="nvarchar" MaxLength="20" />
+    <Property Name="ID главного тренера" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Тренера">
+    <Key>
+      <PropertyRef Name="ID тренера" />
+    </Key>
+    <Property Name="ID тренера" Type="int" Nullable="false" />
+    <Property Name="Преподаваемый вид спорта" Type="nvarchar" MaxLength="30" />
+    <Property Name="Квалификация" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Сертификация текущего года по антидопингу" Type="bit" />
+    <Property Name="Наличие дисквалификаций" Type="bit" />
+  </EntityType>
+  <Association Name="Активность спортсмена_Спортсмены_FK_Rule">
+    <End Role="Спортсмены" Type="Self.Спортсмены" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Активность спортсмена" Type="Self.Активность спортсмена" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Спортсмены">
+        <PropertyRef Name="ID спортсмена" />
+      </Principal>
+      <Dependent Role="Активность спортсмена">
+        <PropertyRef Name="ID спортсмена" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Антидопинговые тесты_Лаборанты_FK_Rule">
+    <End Role="Лаборанты" Type="Self.Лаборанты" Multiplicity="1" />
+    <End Role="Антидопинговые тесты" Type="Self.Антидопинговые тесты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Лаборанты">
+        <PropertyRef Name="ID лаборанта" />
+      </Principal>
+      <Dependent Role="Антидопинговые тесты">
+        <PropertyRef Name="ID лаборанта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Антидопинговые тесты_Пробы_FK_Rule">
+    <End Role="Пробы" Type="Self.Пробы" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Антидопинговые тесты" Type="Self.Антидопинговые тесты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Пробы">
+        <PropertyRef Name="ID пробы" />
+      </Principal>
+      <Dependent Role="Антидопинговые тесты">
+        <PropertyRef Name="ID пробы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Лаборанты_Персональные данные_FK_Rule">
+    <End Role="Персональные данные" Type="Self.Персональные данные" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Лаборанты" Type="Self.Лаборанты" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Персональные данные">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Лаборанты">
+        <PropertyRef Name="ID лаборанта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Принимаемые препараты_Спортсмены_FK_Rule">
+    <End Role="Спортсмены" Type="Self.Спортсмены" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Принимаемые препараты" Type="Self.Принимаемые препараты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Спортсмены">
+        <PropertyRef Name="ID спортсмена" />
+      </Principal>
+      <Dependent Role="Принимаемые препараты">
+        <PropertyRef Name="ID спортсмена" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Пробы_Лаборанты_FK_Rule">
+    <End Role="Лаборанты" Type="Self.Лаборанты" Multiplicity="1" />
+    <End Role="Пробы" Type="Self.Пробы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Лаборанты">
+        <PropertyRef Name="ID лаборанта" />
+      </Principal>
+      <Dependent Role="Пробы">
+        <PropertyRef Name="ID лаборанта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Пробы_Спортсмены_FK_Rule">
+    <End Role="Спортсмены" Type="Self.Спортсмены" Multiplicity="1" />
+    <End Role="Пробы" Type="Self.Пробы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Спортсмены">
+        <PropertyRef Name="ID спортсмена" />
+      </Principal>
+      <Dependent Role="Пробы">
+        <PropertyRef Name="ID спортсмена" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Спортсмены_Персональные данные_FK_Rule">
+    <End Role="Персональные данные" Type="Self.Персональные данные" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Спортсмены" Type="Self.Спортсмены" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Персональные данные">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Спортсмены">
+        <PropertyRef Name="ID спортсмена" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Спортсмены_Тренера_FK_Rule">
+    <End Role="Тренера" Type="Self.Тренера" Multiplicity="1" />
+    <End Role="Спортсмены" Type="Self.Спортсмены" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Тренера">
+        <PropertyRef Name="ID тренера" />
+      </Principal>
+      <Dependent Role="Спортсмены">
+        <PropertyRef Name="ID главного тренера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Тренера_Персональные данные_FK_Rule">
+    <End Role="Персональные данные" Type="Self.Персональные данные" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Тренера" Type="Self.Тренера" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Персональные данные">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Тренера">
+        <PropertyRef Name="ID тренера" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="editing_location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="activity_number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="generate_storage_time" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nomer_test" Type="int" Mode="In" />
+  </Function>
+  <Function Name="IsValid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bit" />
+  <Function Name="rating" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="id_coach" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище Антидопинговое_агенствоModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Активность спортсмена" EntityType="Self.Активность спортсмена" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Антидопинговые тесты" EntityType="Self.Антидопинговые тесты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Лаборанты" EntityType="Self.Лаборанты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Персональные данные" EntityType="Self.Персональные данные" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Принимаемые препараты" EntityType="Self.Принимаемые препараты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Пробы" EntityType="Self.Пробы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Спортсмены" EntityType="Self.Спортсмены" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Тренера" EntityType="Self.Тренера" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Активность спортсмена_Спортсмены_FK_Rule" Association="Self.Активность спортсмена_Спортсмены_FK_Rule">
+      <End Role="Спортсмены" EntitySet="Спортсмены" />
+      <End Role="Активность спортсмена" EntitySet="Активность спортсмена" />
+    </AssociationSet>
+    <AssociationSet Name="Антидопинговые тесты_Лаборанты_FK_Rule" Association="Self.Антидопинговые тесты_Лаборанты_FK_Rule">
+      <End Role="Лаборанты" EntitySet="Лаборанты" />
+      <End Role="Антидопинговые тесты" EntitySet="Антидопинговые тесты" />
+    </AssociationSet>
+    <AssociationSet Name="Антидопинговые тесты_Пробы_FK_Rule" Association="Self.Антидопинговые тесты_Пробы_FK_Rule">
+      <End Role="Пробы" EntitySet="Пробы" />
+      <End Role="Антидопинговые тесты" EntitySet="Антидопинговые тесты" />
+    </AssociationSet>
+    <AssociationSet Name="Лаборанты_Персональные данные_FK_Rule" Association="Self.Лаборанты_Персональные данные_FK_Rule">
+      <End Role="Персональные данные" EntitySet="Персональные данные" />
+      <End Role="Лаборанты" EntitySet="Лаборанты" />
+    </AssociationSet>
+    <AssociationSet Name="Принимаемые препараты_Спортсмены_FK_Rule" Association="Self.Принимаемые препараты_Спортсмены_FK_Rule">
+      <End Role="Спортсмены" EntitySet="Спортсмены" />
+      <End Role="Принимаемые препараты" EntitySet="Принимаемые препараты" />
+    </AssociationSet>
+    <AssociationSet Name="Пробы_Лаборанты_FK_Rule" Association="Self.Пробы_Лаборанты_FK_Rule">
+      <End Role="Лаборанты" EntitySet="Лаборанты" />
+      <End Role="Пробы" EntitySet="Пробы" />
+    </AssociationSet>
+    <AssociationSet Name="Пробы_Спортсмены_FK_Rule" Association="Self.Пробы_Спортсмены_FK_Rule">
+      <End Role="Спортсмены" EntitySet="Спортсмены" />
+      <End Role="Пробы" EntitySet="Пробы" />
+    </AssociationSet>
+    <AssociationSet Name="Спортсмены_Персональные данные_FK_Rule" Association="Self.Спортсмены_Персональные данные_FK_Rule">
+      <End Role="Персональные данные" EntitySet="Персональные данные" />
+      <End Role="Спортсмены" EntitySet="Спортсмены" />
+    </AssociationSet>
+    <AssociationSet Name="Спортсмены_Тренера_FK_Rule" Association="Self.Спортсмены_Тренера_FK_Rule">
+      <End Role="Тренера" EntitySet="Тренера" />
+      <End Role="Спортсмены" EntitySet="Спортсмены" />
+    </AssociationSet>
+    <AssociationSet Name="Тренера_Персональные данные_FK_Rule" Association="Self.Тренера_Персональные данные_FK_Rule">
+      <End Role="Персональные данные" EntitySet="Персональные данные" />
+      <End Role="Тренера" EntitySet="Тренера" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,84 @@
+﻿@model cw2.Models.Антидопинговые_тесты
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать данные</h1> }
+}
+<h2>Details</h2>
+
+<div>
+    <h4>Антидопинговые_тесты</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_проведения)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_проведения)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Время_хранения_пробы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Время_хранения_пробы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Вскрытие_пробы_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вскрытие_пробы_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_запрещенных_препаратов)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_запрещенных_препаратов)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Выявленные_запрещенные_препараты)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Выявленные_запрещенные_препараты)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Согласие_спортсмена_с_результатом)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Согласие_спортсмена_с_результатом)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Лаборанты.Категория)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Лаборанты.Категория)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Пробы.Вид_пробы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Пробы.Вид_пробы)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Номер_теста }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

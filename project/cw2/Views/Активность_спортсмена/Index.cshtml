@@ -1,0 +1,86 @@
+﻿@model IEnumerable<cw2.Models.Активность_спортсмена>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{ if (Session["role"].ToString() != "Спортсмен" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+
+<h2>Данные об активностях спортсменов</h2>
+@using (@Html.BeginForm())
+{
+    @Html.Label("Поиск по местаположению спортсменов:")
+    <p>@Html.TextBox("location")</p>
+    <input type="submit" value="Найти" id="submit" name="submit" class="btn btn-default" /><br />
+
+
+    @Html.Label("Чтобы отредактировать местоположение и привести его в полную форму, введите номер активности и нажмите Ок :")
+    <p>@Html.TextBox("number")</p>
+    <input type="submit" value="Ok" id="submit" name="submit" class="btn btn-default" />
+}
+@{ if (Session["role"].ToString() == "Спортсмен")
+    {<p>
+            <a href="~/Спортсмены/Index">Вернуться к данным о спортсменах</a>
+        </p>} }
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Номер_активости_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Спортсмены.Персональные_данные.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Местонахождение_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Деятельность)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Свободный_час)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Номер_активости_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Спортсмены.Персональные_данные.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Местонахождение_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Деятельность)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Свободный_час)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Номер_активости_ }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Номер_активости_ }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Номер_активости_ })
+            </td>
+        </tr>
+    }
+
+</table>

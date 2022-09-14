@@ -1,0 +1,67 @@
+﻿@model cw2.Models.Тренера
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{ if (Session["role"].ToString() != "Тренер" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав удалять данные</h1> }
+}
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Тренера</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Преподаваемый_вид_спорта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Преподаваемый_вид_спорта)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Квалификация)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Квалификация)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сертификация_текущего_года_по_антидопингу)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сертификация_текущего_года_по_антидопингу)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_дисквалификаций)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_дисквалификаций)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Персональные_данные.Фамилия)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

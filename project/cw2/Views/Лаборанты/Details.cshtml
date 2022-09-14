@@ -1,0 +1,52 @@
+﻿@model cw2.Models.Лаборанты
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать данные</h1> }
+}
+<h2>Details</h2>
+
+<div>
+    <h4>Лаборанты</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Категория)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Категория)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Место_работы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Место_работы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Стаж__в_годах_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Стаж__в_годах_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Персональные_данные.Фамилия)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_лаборанта }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

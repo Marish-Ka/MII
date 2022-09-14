@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Антидопинговое_агенствоModelContainer" CdmEntityContainer="Антидопинговое_агенствоEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Активность_спортсмена">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Активность_спортсмена">
+        <MappingFragment StoreEntitySet="Активность спортсмена">
+          <ScalarProperty Name="Номер_активости_" ColumnName="Номер активости " />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Местонахождение_" ColumnName="Местонахождение " />
+          <ScalarProperty Name="Деятельность" ColumnName="Деятельность" />
+          <ScalarProperty Name="Свободный_час" ColumnName="Свободный час" />
+          <ScalarProperty Name="ID_спортсмена" ColumnName="ID спортсмена" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Антидопинговые_тесты">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Антидопинговые_тесты">
+        <MappingFragment StoreEntitySet="Антидопинговые тесты">
+          <ScalarProperty Name="Номер_теста" ColumnName="Номер теста" />
+          <ScalarProperty Name="Дата_проведения" ColumnName="Дата проведения" />
+          <ScalarProperty Name="Время_хранения_пробы" ColumnName="Время хранения пробы" />
+          <ScalarProperty Name="Вскрытие_пробы_B" ColumnName="Вскрытие пробы B" />
+          <ScalarProperty Name="Наличие_запрещенных_препаратов" ColumnName="Наличие запрещенных препаратов" />
+          <ScalarProperty Name="Выявленные_запрещенные_препараты" ColumnName="Выявленные запрещенные препараты" />
+          <ScalarProperty Name="Согласие_спортсмена_с_результатом" ColumnName="Согласие спортсмена с результатом" />
+          <ScalarProperty Name="ID_пробы" ColumnName="ID пробы" />
+          <ScalarProperty Name="ID_лаборанта" ColumnName="ID лаборанта" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Лаборанты">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Лаборанты">
+        <MappingFragment StoreEntitySet="Лаборанты">
+          <ScalarProperty Name="ID_лаборанта" ColumnName="ID лаборанта" />
+          <ScalarProperty Name="Категория" ColumnName="Категория" />
+          <ScalarProperty Name="Место_работы" ColumnName="Место работы" />
+          <ScalarProperty Name="Стаж__в_годах_" ColumnName="Стаж (в годах)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Персональные_данные">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Персональные_данные">
+        <MappingFragment StoreEntitySet="Персональные данные">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+          <ScalarProperty Name="Статус" ColumnName="Статус" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Принимаемые_препараты">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Принимаемые_препараты">
+        <MappingFragment StoreEntitySet="Принимаемые препараты">
+          <ScalarProperty Name="Номер_назначения_врачом" ColumnName="Номер назначения врачом" />
+          <ScalarProperty Name="Медикаменты" ColumnName="Медикаменты" />
+          <ScalarProperty Name="Пищевые_добавки" ColumnName="Пищевые добавки" />
+          <ScalarProperty Name="Витамины" ColumnName="Витамины" />
+          <ScalarProperty Name="Минералы" ColumnName="Минералы" />
+          <ScalarProperty Name="Длительность_приема" ColumnName="Длительность приема" />
+          <ScalarProperty Name="Действие_назначения_врача" ColumnName="Действие назначения врача" />
+          <ScalarProperty Name="ID_спортсмена" ColumnName="ID спортсмена" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Пробы">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Пробы">
+        <MappingFragment StoreEntitySet="Пробы">
+          <ScalarProperty Name="ID_пробы" ColumnName="ID пробы" />
+          <ScalarProperty Name="Дата_забора" ColumnName="Дата забора" />
+          <ScalarProperty Name="Вид_пробы" ColumnName="Вид пробы" />
+          <ScalarProperty Name="Объем_пробы__мл_" ColumnName="Объем пробы (мл)" />
+          <ScalarProperty Name="Плотность__г_л_" ColumnName="Плотность (г/л)" />
+          <ScalarProperty Name="Наличие_проб_A_и_B" ColumnName="Наличие проб A и B" />
+          <ScalarProperty Name="ID_спортсмена" ColumnName="ID спортсмена" />
+          <ScalarProperty Name="ID_лаборанта" ColumnName="ID лаборанта" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Спортсмены">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Спортсмены">
+        <MappingFragment StoreEntitySet="Спортсмены">
+          <ScalarProperty Name="ID_спортсмена" ColumnName="ID спортсмена" />
+          <ScalarProperty Name="Вид_спорта" ColumnName="Вид спорта" />
+          <ScalarProperty Name="Спортивная_дисциплина" ColumnName="Спортивная дисциплина" />
+          <ScalarProperty Name="Спортивное__ый__звание___разряд" ColumnName="Спортивное(-ый) звание / разряд" />
+          <ScalarProperty Name="Гражданство" ColumnName="Гражданство" />
+          <ScalarProperty Name="Спортивное_гражданство" ColumnName="Спортивное гражданство" />
+          <ScalarProperty Name="Инвалидность" ColumnName="Инвалидность" />
+          <ScalarProperty Name="Группа_инвалидности" ColumnName="Группа инвалидности" />
+          <ScalarProperty Name="ID_главного_тренера" ColumnName="ID главного тренера" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Тренера">
+      <EntityTypeMapping TypeName="Антидопинговое_агенствоModel.Тренера">
+        <MappingFragment StoreEntitySet="Тренера">
+          <ScalarProperty Name="ID_тренера" ColumnName="ID тренера" />
+          <ScalarProperty Name="Преподаваемый_вид_спорта" ColumnName="Преподаваемый вид спорта" />
+          <ScalarProperty Name="Квалификация" ColumnName="Квалификация" />
+          <ScalarProperty Name="Сертификация_текущего_года_по_антидопингу" ColumnName="Сертификация текущего года по антидопингу" />
+          <ScalarProperty Name="Наличие_дисквалификаций" ColumnName="Наличие дисквалификаций" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="editing_location" FunctionName="Хранилище Антидопинговое_агенствоModel.editing_location" />
+    <FunctionImportMapping FunctionImportName="generate_storage_time" FunctionName="Хранилище Антидопинговое_агенствоModel.generate_storage_time" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Антидопинговое_агенствоModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Антидопинговое_агенствоModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Антидопинговое_агенствоModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

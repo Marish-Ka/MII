@@ -1,0 +1,92 @@
+﻿@model cw2.Models.Спортсмены
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ if (Session["role"].ToString() == "Лаборант" )
+    {<h1>У вас нет прав просматривать данные</h1> }
+}
+<h2>Details</h2>
+
+<div>
+    <h4>Спортсмены</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Вид_спорта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вид_спорта)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спортивная_дисциплина)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спортивная_дисциплина)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спортивное__ый__звание___разряд)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спортивное__ый__звание___разряд)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Гражданство)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Гражданство)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спортивное_гражданство)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спортивное_гражданство)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Инвалидность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Инвалидность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Группа_инвалидности)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Группа_инвалидности)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Персональные_данные.Фамилия)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Тренера.Преподаваемый_вид_спорта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тренера.Преподаваемый_вид_спорта)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_спортсмена }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

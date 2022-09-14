@@ -1,0 +1,86 @@
+﻿@model IEnumerable<cw2.Models.Принимаемые_препараты>
+
+@{
+    ViewBag.Title = ViewBag.cockie;
+}
+@{ if (Session["role"].ToString() != "Спортсмен" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+<h2>Принимаемые препараты</h2>
+@using (@Html.BeginForm())
+{
+    @Html.Label("Поиск по названиям медикаментов:")
+    <p>@Html.TextBox("medication")</p>
+    <input id="submit" type="submit" value="Найти" name="submit" class="btn btn-default" /><br />
+}
+@{ if (Session["role"].ToString() == "Спортсмен")
+    {<p>
+            <a href="~/Спортсмены/Index">Вернуться к данным о спортсменах</a>
+        </p>} }
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Спортсмены.Персональные_данные.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Медикаменты)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Пищевые_добавки)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Витамины)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Минералы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Длительность_приема)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Действие_назначения_врача)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Спортсмены.Персональные_данные.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Медикаменты)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Пищевые_добавки)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Витамины)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Минералы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Длительность_приема)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Действие_назначения_врача)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Номер_назначения_врачом }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Номер_назначения_врачом }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Номер_назначения_врачом })
+            </td>
+        </tr>
+    }
+
+</table>

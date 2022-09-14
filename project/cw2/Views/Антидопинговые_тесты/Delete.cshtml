@@ -1,0 +1,91 @@
+﻿@model cw2.Models.Антидопинговые_тесты
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав удалять данные</h1> }
+}
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Антидопинговые_тесты</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_проведения)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_проведения)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Время_хранения_пробы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Время_хранения_пробы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Вскрытие_пробы_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вскрытие_пробы_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_запрещенных_препаратов)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_запрещенных_препаратов)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Выявленные_запрещенные_препараты)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Выявленные_запрещенные_препараты)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Согласие_спортсмена_с_результатом)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Согласие_спортсмена_с_результатом)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Лаборанты.Категория)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Лаборанты.Категория)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Пробы.Вид_пробы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Пробы.Вид_пробы)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

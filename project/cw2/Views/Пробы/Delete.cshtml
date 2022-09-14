@@ -1,0 +1,83 @@
+﻿@model cw2.Models.Пробы
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав удалять данные</h1> }
+}
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Пробы</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_забора)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_забора)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Вид_пробы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вид_пробы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Объем_пробы__мл_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Объем_пробы__мл_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Плотность__г_л_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Плотность__г_л_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_проб_A_и_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_проб_A_и_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Лаборанты.Категория)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Лаборанты.Категория)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спортсмены.Вид_спорта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спортсмены.Вид_спорта)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Role";
+}
+
+<h2>Role</h2>
+@ViewBag.mes
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.Label("Выберите роль под которой вы хотите зайти в систему:")
+        <div class="col-md-10">
+            @Html.DropDownList("role", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано", Value="null"},
+                new SelectListItem() {Text="Спортсмен", Value="Спортсмен"},
+                new SelectListItem() {Text="Тренер", Value="Тренер"},
+                new SelectListItem() {Text="Лаборант", Value="Лаборант"},
+                new SelectListItem() {Text="Администратор", Value="Администратор"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Зайти на сайт" class="btn btn-default" />
+        </div>
+
+    </div>
+}

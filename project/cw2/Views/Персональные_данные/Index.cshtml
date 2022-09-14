@@ -1,0 +1,94 @@
+﻿@model IEnumerable<cw2.Models.Персональные_данные>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ if (Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+
+<h2>Персональные данные</h2>
+@{ if (Session["role"].ToString() == "Администратор")
+    {<h4>Если вы администратор, у вас полный доступ ко всем таблицам</h4>
+        <p>
+            <a href="~/Антидопинговые_тесты/Index">Антидопинговые тесты</a>
+
+            <a href="~/Пробы/Index">Забор проб</a>
+
+            <a href="~/Активность_спортсмена/Index">Активность спортсмена</a>
+
+            <a href="~/Лаборанты/Index">Лаборанты</a>
+        </p>
+        <p>
+            <a href="~/Принимаемые_препараты/Index">Принимаемые препараты</a>
+
+            <a href="~/Спортсмены/Index">Спортсмены</a>
+
+            <a href="~/Тренера/Index">Тренера</a>
+        </p>} }
+        <br />
+        <br />
+        <p>
+            @Html.ActionLink("Добавить запись", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Фамилия)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Имя)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Отчество)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Пол)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Дата_рождения)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Номер_телефона)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Статус)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Фамилия)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Имя)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Отчество)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Пол)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Дата_рождения)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Номер_телефона)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Статус)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>

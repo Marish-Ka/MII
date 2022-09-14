@@ -1,0 +1,101 @@
+﻿@model IEnumerable<cw2.Models.Антидопинговые_тесты>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+
+
+<h2>Антидопинговые тесты</h2>
+@using (@Html.BeginForm())
+{
+    @Html.Label("Чтобы посчитать точное время хранения, введите номер теста и нажмите Рассчитать")
+    <p>@Html.TextBox("number")</p>
+    <input type="submit" value="Рассчитать" id="submit" name="submit" class="btn btn-default" />
+}
+@{ if (Session["role"].ToString() == "Лаборант")
+    {<p>
+    <a href="~/Лаборанты/Index">Вернуться к данным о лаборантах</a>
+</p>} }
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Номер_теста)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Пробы.ID_пробы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_проведения)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Время_хранения_пробы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Вскрытие_пробы_B)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наличие_запрещенных_препаратов)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Выявленные_запрещенные_препараты)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Согласие_спортсмена_с_результатом)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Лаборанты.ID_лаборанта)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Номер_теста)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Пробы.ID_пробы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_проведения)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Время_хранения_пробы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Вскрытие_пробы_B)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наличие_запрещенных_препаратов)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Выявленные_запрещенные_препараты)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Согласие_спортсмена_с_результатом)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Лаборанты.ID_лаборанта)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Номер_теста }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Номер_теста }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Номер_теста })
+            </td>
+        </tr>
+    }
+
+</table>

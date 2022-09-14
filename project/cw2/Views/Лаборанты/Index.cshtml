@@ -1,0 +1,72 @@
+﻿@model IEnumerable<cw2.Models.Лаборанты>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+<h2>Данные о лаборантах</h2>
+@{ if (Session["role"].ToString() == "Лаборант")
+    {<h4>Если вы лаборант, вам доступны к изменениям следующие данные:</h4>
+        <p>
+            <a href="~/Антидопинговые_тесты/Index">Антидопинговые тесты</a>
+        </p>
+        <p>
+            <a href="~/Пробы/Index">Забор проб</a>
+        </p>}}
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<br />
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_лаборанта)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Категория)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Место_работы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Стаж__в_годах_)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_лаборанта)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Персональные_данные.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Категория)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Место_работы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Стаж__в_годах_)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_лаборанта }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_лаборанта }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_лаборанта })
+            </td>
+        </tr>
+    }
+
+</table>

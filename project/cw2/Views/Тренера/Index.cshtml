@@ -1,0 +1,112 @@
+﻿@model IEnumerable<cw2.Models.Тренера>
+
+@{ if (Session["role"].ToString() == "Лаборант")
+    {<h1>У вас нет прав просматривать, изменять и удалять данные</h1> }
+}
+@{ if (Session["role"].ToString() == "Спортсмен")
+    {<h1>Вы можете только просматривать данные и пользоваться подсчетом рейтинга и фильтрами</h1> }
+}
+
+<h2>Данные о тренерах</h2>
+@{ if (Session["role"].ToString() == "Тренер")
+    {<h4>Если вы тренер, вам  доступен просмотр следующих данных:</h4>
+        <p>
+            <a href="~/Спортсмены/Index">Данные о спортсменах</a>
+        </p>} }
+@{ if (Session["role"].ToString() == "Спортсмен")
+    {<p>
+            <a href="~/Спортсмены/Index">Вернуться к данным о спортсменах</a>
+        </p>} }
+@{ if (Session["role"].ToString() == "Администратор")
+    {<a href="~/Персональные_данные/Index">Вернуться к персональным данным</a> }
+}
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Квалификация </label>
+        @Html.DropDownList("qualification", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано", Value="null"},
+                new SelectListItem() {Text="Высшая категория", Value="Высшая категория"},
+                new SelectListItem() {Text="Первая категория", Value="Первая категория"},
+                new SelectListItem() {Text="Вторая категория", Value="Вторая категория"},
+                new SelectListItem() {Text="Без категории", Value="Без категории"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Наличие сертификации текущего года по антидопингу: </label>
+        @Html.DropDownList("certification", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано",Value="null"},
+                new SelectListItem() {Text="Есть", Value=bool.TrueString},
+                new SelectListItem() {Text="Нет", Value=bool.FalseString}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" name="filter" value="Фильтр" class="btn btn-default" />
+        <br />
+    </div>
+</form>
+@using (@Html.BeginForm())
+{
+    @Html.Label("Чтобы узнать рейтинг тренера, введите его номер и нажмите Ок :")
+    <p>@Html.TextBox("number")</p>
+    <input type="submit" value="Ok" id="submit" name="submit" class="btn btn-default" />
+    @Html.Label(@ViewBag.func as string)
+}
+<br>
+<br />
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_тренера)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Персональные_данные.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Преподаваемый_вид_спорта)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Квалификация)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Сертификация_текущего_года_по_антидопингу)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наличие_дисквалификаций)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_тренера)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Персональные_данные.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Преподаваемый_вид_спорта)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Квалификация)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сертификация_текущего_года_по_антидопингу)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наличие_дисквалификаций)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_тренера }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_тренера }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_тренера })
+            </td>
+        </tr>
+    }
+
+</table>

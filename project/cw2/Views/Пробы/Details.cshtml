@@ -1,0 +1,76 @@
+﻿@model cw2.Models.Пробы
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ if (Session["role"].ToString() != "Лаборант" && Session["role"].ToString() != "Администратор")
+    {<h1>У вас нет прав просматривать данные</h1> }
+}
+<h2>Details</h2>
+
+<div>
+    <h4>Пробы</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_забора)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_забора)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Вид_пробы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вид_пробы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Объем_пробы__мл_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Объем_пробы__мл_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Плотность__г_л_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Плотность__г_л_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_проб_A_и_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_проб_A_и_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Лаборанты.Категория)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Лаборанты.Категория)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Спортсмены.Вид_спорта)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Спортсмены.Вид_спорта)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_пробы }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
